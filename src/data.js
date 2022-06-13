@@ -4,6 +4,7 @@ export const products = [
 
   {
     name: "Winter body",
+    id:1,
     description: [
       { support: "گارانتی مادام العمر" },
       { support: "ارسال رایگان" },
@@ -16,6 +17,7 @@ export const products = [
   }, 
   {
     name: "Adidas",
+    id:2,
     description: [
       { support: "گارانتی مادام العمر" },
       { support: "اورجینال" },
@@ -27,6 +29,7 @@ export const products = [
   },  
   {
     name: "Vans",
+    id:3,
     description: [
       { support: "گارانتی مادام العمر" },
       { support: "اورجینال" },
@@ -39,6 +42,7 @@ export const products = [
   },  
   {
     name: "White",
+    id:4,
     description: [
       { support: "گارانتی مادام العمر" },
       { support: "اورجینال" },
@@ -51,6 +55,7 @@ export const products = [
   },
   {
     name: "Croopped-shoe",
+    id:5,
     description: [
       { support: "گارانتی مادام العمر" },
       { support: "اورجینال" },
@@ -63,6 +68,7 @@ export const products = [
   },  
   {
     name: "Blues",
+    id:6,
     description: [
       { support: "گارانتی مادام العمر" },
       { support: "اورجینال" },
@@ -81,14 +87,14 @@ export const users = [
   {
     name: "Saheb mohamadi",
     email: "saheb.ex@gmail.com",
-    password: bcrypt.hashSync("12345", 8),
+    // password: bcrypt.hashSync("12345", 8),
     phoneNumber: "09180000000",
     isAdmin: true,
   },
   {
     name: "John",
     email: "user@example.com",
-    password: bcrypt.hashSync("1234", 8),
+    // password: bcrypt.hashSync("1234", 8),
     isAdmin: false,
     phoneNumber: "09181230000",
   },
