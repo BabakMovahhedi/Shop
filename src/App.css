@@ -32,6 +32,8 @@ background: #60a5fa;
 .container{
   display: flex;
   justify-content: center;
+  /* max-width: 1024px;
+  width: 100%; */
 }
 .product_text{
   padding: 10px;
