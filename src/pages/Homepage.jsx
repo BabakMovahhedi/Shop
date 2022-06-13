@@ -13,7 +13,7 @@ const Homepage = () => {
            <section className="productlist">
             {data.products.map((product)=>{
                 return(
-                    <section className="product">
+                    <section key={product.id} className="product">
                    <div className="product_img">
                    <img src={product.image} alt={product.name} />
                    </div>
