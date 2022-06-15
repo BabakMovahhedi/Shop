@@ -16,7 +16,7 @@ switch(action.type){
                             updatCart[updateItemIndex]=updatedItem;
                         }
 
-                    return {...state,Cart:updatCart};
+                    return {...state,Cart:updatCart,total:state.total+ action.payload.offPrice};
                 }
 
     case 'REMOVE_TO_CART': 
@@ -27,11 +27,11 @@ switch(action.type){
                         const updatedItem={...updatCart[updateItemIndex]};
                         if(updatedItem.quantity===1){
                                 const filterCart= updatCart.filter((item)=>item.id !==action.payload.id ) 
-                                return {...state,Cart:filterCart};                   
+                                return {...state,Cart:filterCart,total:state.total- action.payload.offPrice};                   
                         }else{
                             updatedItem.quantity--;
                             updatCart[updateItemIndex]=updatedItem;
-                            return {...state,Cart:updatCart};
+                            return {...state,Cart:updatCart,total:state.total- action.payload.offPrice};
                         }
                     }
                         

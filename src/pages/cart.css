@@ -32,15 +32,22 @@
 
 
 }
-.cart_item_summery{
+.cart_summery{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: #fff;
     border:1px solid #fff;
     border-radius: 5px;
     justify-content: center;
     margin-left: 15px;
     width: 30%;
+}
+.cart_summery_item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
 }
 .cart_btn button{
    margin: 0px 5px;
