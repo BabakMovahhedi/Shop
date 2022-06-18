@@ -4,8 +4,7 @@ import './Navigation.css';
 
 
 const Navigation = () => {
-    const cartnumber=useCart(); 
-    
+    const cartnumber=useCart();    
     
     return (        
             

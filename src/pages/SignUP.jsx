@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import Input from "../common/input";
+import { Link} from "react-router-dom";
 import '../pages/SignUp.css';
 import * as yup from 'yup';
 
@@ -36,7 +37,9 @@ const SignUp = () => {
      <Input formik={formik} name='phone ' label='phone' type='tel'/>
      <Input formik={formik} name='password' label='password' type='password' />                                    
      <button type="submit" disabled={!formik.isValid} className='btn primary' >signup</button>
-
+        <Link to='/login'>
+        <p> Login Befor ?</p>
+        </Link>
     </form>
 
     </div>      
