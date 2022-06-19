@@ -3,6 +3,10 @@
     width: 100%;
     height: 4.5rem;
     background: #eef2ff;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
 }
 .Navigation ul {
     display: flex;
@@ -11,14 +15,17 @@
     height: 100%;
 }
 .Navigation nav{
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     display: flex;
     height: 100%;
+    width: 100%;
+    max-width: 1240px;
+    
 }
-.Navigation li{
+/* .Navigation li{
     margin: 0 1rem;
-}
+} */
 .Navigation a{
     text-decoration: none;
     display: block;
@@ -29,4 +36,8 @@
 .Navigation a:hover{
     color: blueviolet;
     background-color: antiquewhite;
+}
+nav ul{
+display: flex;
+justify-content: center;
 }

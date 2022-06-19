@@ -1,6 +1,8 @@
 import { useFormik } from "formik";
+import { useState } from "react";
+import { loginUser } from "../services/httpServices";
 import Input from "../common/input";
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import '../pages/login.css';
 import * as yup from 'yup';
 
@@ -14,12 +16,29 @@ const validationSchema=yup.object({
 
 
 const Login = () => {
+    const Navigate= useNavigate();
+    const[error,setError]=useState(null);
+    const onSubmit=async (values)=>{ 
+            console.log(values); 
+            const {email,password}=values;
+            const userdata={
+            email:email,password:password
+                };
+        try {
+             const{data} = await loginUser(userdata);
+             setError(null)
+             Navigate('/cart');
+        } catch (error) {
+            console.log(error.response.data.message);
+            if(error.response && error.response.data.message)
+            setError(error.response.data.message)
+        }};
 
     const formik=useFormik({initialValues:{
         
         email:'',       
         password:''},
-        onSubmit:(values)=>{console.log(values)},
+        onSubmit:onSubmit,
         validationSchema:validationSchema,
         validateOnMount:true,
      } );
@@ -32,6 +51,7 @@ const Login = () => {
      <Input formik={formik} name='email' label='Email' type='email' />     
      <Input formik={formik} name='password' label='password' type='password' />                                    
      <button type="submit" disabled={!formik.isValid} className='btn primary' >Login</button>
+     {error && <p style={{color:"red"}}>{error} </p>}
      <Link to='/signup'>
         <p> signup Befor ?</p>
         </Link>
