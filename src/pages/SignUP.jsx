@@ -5,6 +5,7 @@ import { Link,useNavigate} from "react-router-dom";
 import '../pages/SignUp.css';
 import * as yup from 'yup';
 import { useState } from "react";
+import { useAouthAction } from "../providers/AouthProvider";
 
 
 // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -27,6 +28,7 @@ const initialValues={
 const SignUp = () => {
     const[error,setError]=useState(null);
     const Navigate= useNavigate();
+    const setLogin=useAouthAction();
     
     const onSubmit=async (values)=>{ 
         console.log(values); 
@@ -35,7 +37,9 @@ const SignUp = () => {
         name:name,email:email,phoneNumber:phone,password:password
             };
     try {
-         const{data} = await signupUser(userdata);         
+         const{data} = await signupUser(userdata);   
+         setLogin(data);
+         localStorage.setItem('loginState',JSON.stringify(data) );      
        Navigate('/');
     } catch (error) {
         console.log(error.response.data.message);

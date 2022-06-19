@@ -44,9 +44,9 @@ const Cart = () => {
                     <p> discunt:{item.price-item.offPrice} $</p>                    
                    </div>
                     <div className="cart_btn">
-                    <button onClick={()=>addHandler(item) } >Add</button>
-                    <button>number: {item.quantity} </button>
-                    <button onClick={()=> removeHandler(item) }>Remove</button>
+                    <button className='btn primary' onClick={()=>addHandler(item) } >Add</button>
+                    <button className='btn primary'>number: {item.quantity} </button>
+                    <button className='btn primary' onClick={()=> removeHandler(item) }>Remove</button>
                    </div>
                     
                 </div>

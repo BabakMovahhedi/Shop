@@ -7,6 +7,8 @@ import CartProviders from "./providers/CartProviders";
 import Layout from "./Layout/Layout";
 import Login from './pages/Login';
 import Cart from "./pages/Cart";
+import Profile from "./pages/Profile";
+import AouthProviders from "./providers/AouthProvider";
 import './App.css';
 
 
@@ -14,16 +16,19 @@ import './App.css';
 function App() {
   return (   
        <CartProviders>
+        <AouthProviders>
         <Layout>
-      <ToastContainer/>
+        <ToastContainer/>
         <Routes >       
         <Route path='/' element={<Homepage/> } />
         <Route path="Cart" element={<Cart/>}/>
         <Route path="checkout" element={<CheckOut/>}/> 
         <Route path='signup' element={<SignUp/> } />
-        <Route path='login' element={<Login/> } />    
+        <Route path='login' element={<Login/> } /> 
+        <Route path='profile' element={<Profile/> } />    
       </Routes>
     </Layout>
+        </AouthProviders>
        </CartProviders>
     
   

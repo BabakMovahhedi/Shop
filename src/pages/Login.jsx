@@ -5,6 +5,7 @@ import Input from "../common/input";
 import { Link, useNavigate} from "react-router-dom";
 import '../pages/login.css';
 import * as yup from 'yup';
+import { useAouthAction } from "../providers/AouthProvider";
 
 
 
@@ -18,6 +19,7 @@ const validationSchema=yup.object({
 const Login = () => {
     const Navigate= useNavigate();
     const[error,setError]=useState(null);
+    const setLogin=useAouthAction();
     const onSubmit=async (values)=>{ 
             console.log(values); 
             const {email,password}=values;
@@ -26,8 +28,10 @@ const Login = () => {
                 };
         try {
              const{data} = await loginUser(userdata);
+             setLogin(data);
+             localStorage.setItem('loginState',JSON.stringify(data) );
              setError(null)
-             Navigate('/cart');
+             Navigate('/profile');
         } catch (error) {
             console.log(error.response.data.message);
             if(error.response && error.response.data.message)
