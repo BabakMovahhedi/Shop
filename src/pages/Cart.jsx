@@ -78,7 +78,7 @@ const CartSummery=()=>{
             <p>total net</p>
             <p>{total} </p>
         </div>
-        <Link to='/checkout' >
+        <Link to='/signup?redirect=/checkout' >
         <button className='btn primary'  >CheckOut</button>
         </Link>
 

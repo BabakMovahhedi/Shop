@@ -4,8 +4,9 @@ import Input from "../common/input";
 import { Link,useNavigate} from "react-router-dom";
 import '../pages/SignUp.css';
 import * as yup from 'yup';
-import { useState } from "react";
-import { useAouthAction } from "../providers/AouthProvider";
+import { useState,useEffect } from "react";
+import { useAouthAction,useAouth } from "../providers/AouthProvider";
+import { useQuery } from "../hooks/useQuery";
 
 
 // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -29,7 +30,15 @@ const SignUp = () => {
     const[error,setError]=useState(null);
     const Navigate= useNavigate();
     const setLogin=useAouthAction();
+    const Login=useAouth();    
+    const query=useQuery();
+    const redirect=query.get('redirect') || '/';
     
+
+    useEffect(()=>{
+        if(Login) Navigate(redirect);
+    },[Login,redirect])
+
     const onSubmit=async (values)=>{ 
         console.log(values); 
         const {name,email,phone,password}=values;
@@ -40,7 +49,7 @@ const SignUp = () => {
          const{data} = await signupUser(userdata);   
          setLogin(data);
          localStorage.setItem('loginState',JSON.stringify(data) );      
-       Navigate('/');
+         Navigate(redirect);
     } catch (error) {
         console.log(error.response.data.message);
         if(error.response && error.response.data.message)
@@ -68,7 +77,7 @@ const SignUp = () => {
 
      <button type="submit" disabled={!formik.isValid} className='btn primary' >signup</button>
         {error && <p style={{color:"red"}}>{error} </p>}
-        <Link to='/login'>
+        <Link to={`/login?redirect=${redirect}`}>
         <p> Login Befor ?</p>
         </Link>
 
